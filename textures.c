@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 14:46:31 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/26 18:31:02 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 01:05:04 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ void	texturing_calculations(t_all *all, t_ray *ray)
 		if (ray->stepX < 0)
 			all->tex.texX = (int)(wallX * (double)(all->tex.tex_w[0]));
 		else
-			all->tex.texX = (int)(wallX * (double)(all->tex.tex_w[1]));
+			all->tex.texX = -(int)(wallX * (double)(all->tex.tex_w[1]));
 	}
 	else
 	{
 		if (ray->stepY < 0)
 			all->tex.texX = (int)(wallX * (double)(all->tex.tex_w[2]));
 		else
-			all->tex.texX = (int)(wallX * (double)(all->tex.tex_w[3]));	
+			all->tex.texX = -(int)(wallX * (double)(all->tex.tex_w[3]));	
 	}
 	if (ray->side == 0 && ray->ray_dirX < 0)
 		all->tex.texX = all->tex.tex_w[0] - all->tex.texX - 1;

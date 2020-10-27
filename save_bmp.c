@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 15:05:51 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 21:36:58 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 23:33:04 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	save_bmp(t_all *all)
 	int			fd;
 	t_bmp		bmp;
 
-	fd = open("cub3D.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666)))
+		error_write(0);
 	bmp = init_bmp(all);
 	write_header(fd, &bmp);
 	write_file(fd, all);

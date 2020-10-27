@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 23:59:31 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 16:13:12 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 00:17:17 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ void	walls_validity(char **map, int x, int y)
 	if (y < 0 || y >= i || x < 0 || x >= j)
 		error_write(4);
 	if (map[y][x] == '1' || map[y][x] == '3' || map[y][x] == ' '
-		|| map[y][x] == '2' || !map[y][x])
+		|| map[y][x] == '4' || !map[y][x])
 		return ;
 	if (map[y][x] == '0')
 		map[y][x] = '3';
+	if (map[y][x] == '2')
+		map[y][x] = '4';
 	walls_validity(map, x, y + 1);
 	walls_validity(map, x, y - 1);
 	walls_validity(map, x + 1, y);
@@ -115,6 +117,8 @@ void	return_walls(char **map, int x, int y)
 		return ;
 	if (map[y][x] == '3')
 		map[y][x] = '0';
+	if (map[y][x] == '4')
+		map[y][x] = '2';
 	return_walls(map, x, y + 1);
 	return_walls(map, x, y - 1);
 	return_walls(map, x + 1, y);

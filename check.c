@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 19:45:30 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 14:07:03 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 00:17:00 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ void	check_map_trash(char *line, t_all *all)
 void	another_map_check(t_all *all, int x, int y)
 {
 	player_validity(all);
-	if (all->s_map.map[0][x] == '3' || all->s_map.map[0][x] == '2')
+	if (all->s_map.map[0][x] == '3' || all->s_map.map[0][x] == '4')
 		error_write(4);
-	if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] == '2')\
+	if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] == '4')\
 	&& (all->s_map.map[y][x + 1] == '0' || all->s_map.map[y][x - 1] == '0'\
 	|| all->s_map.map[y + 1][x] == '0' || all->s_map.map[y - 1][x] == '0'))
 		error_write(4);
-	if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] == '2')\
+	if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] == '4')\
 	&& (!all->s_map.map[y][x + 1] || !all->s_map.map[y][x - 1]\
 	|| !all->s_map.map[y + 1][x] || !all->s_map.map[y - 1][x]))
 		error_write(4);
