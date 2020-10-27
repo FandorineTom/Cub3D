@@ -6,21 +6,11 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:44:41 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 23:32:24 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:15:53 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
-
-t_map	init_map(void)
-{
-	t_map	map;
-
-	if (!(map.map_line = malloc(sizeof(char) * 1)))
-		error_write(5);
-	map.map_line[0] = '\0';
-	return (map);
-}
 
 t_tex	init_tex(void)
 {
@@ -59,11 +49,13 @@ t_mov	init_mov(void)
 	t_mov	mov;
 
 	mov.m_speed = 0.07;
-	mov.r_speed = 0.03;
+	mov.r_speed = 0.05;
 	mov.w = 0;
 	mov.s = 0;
 	mov.a = 0;
 	mov.d = 0;
+	mov.left = 0;
+	mov.right = 0;
 	return (mov);
 }
 

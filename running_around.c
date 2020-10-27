@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 19:59:34 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 20:49:48 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:26:06 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	turning_left(t_all *all)
 	double	tmp_dirX;
 	double	tmp_planeX;
 
-	if (all->mov.a)
+	if (all->mov.left)
 	{
 		tmp_dirX = all->plr.dirX;
 		all->plr.dirX = all->plr.dirX * cos(-all->mov.r_speed) -\
@@ -54,13 +54,36 @@ void	turning_left(t_all *all)
 	}
 }
 
+void	left_right(t_all *all)
+{
+	if (all->mov.a)
+	{
+		if (all->s_map.map[(int)(all->plr.y)][(int)(all->plr.x +\
+		all->plr.dirY * all->mov.m_speed)] == '0')
+			all->plr.x += all->plr.dirY * all->mov.m_speed;
+		if (all->s_map.map[(int)(all->plr.y - all->plr.dirX *\
+		all->mov.m_speed)][(int)(all->plr.x)] == '0')
+			all->plr.y -= all->plr.dirX * all->mov.m_speed;
+	}
+	if (all->mov.d)
+	{
+		if (all->s_map.map[(int)(all->plr.y)][(int)(all->plr.x -\
+		all->plr.dirY * all->mov.m_speed)] == '0')
+			all->plr.x -= all->plr.dirY * all->mov.m_speed;
+		if (all->s_map.map[(int)(all->plr.y + all->plr.dirX *\
+		all->mov.m_speed)][(int)(all->plr.x)] == '0')
+			all->plr.y += all->plr.dirX * all->mov.m_speed;
+	}
+}
+
 void	running_around(t_all *all)
 {
 	double	tmp_dirX;
 	double	tmp_planeX;
 
 	front_back(all);
-	if (all->mov.d)
+	left_right(all);
+	if (all->mov.right)
 	{
 		tmp_dirX = all->plr.dirX;
 		all->plr.dirX = all->plr.dirX * cos(all->mov.r_speed) -\

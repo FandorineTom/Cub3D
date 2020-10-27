@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:20:52 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/26 15:16:53 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:14:04 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_free(char **s)
 
 void	error_write(int i)
 {
+	if (i == 0)
+		write(1, "Error\ncouldn't create a bmp file\n", 34);
 	if (i == 1)
 		write(1, "Error\ninvalid screen resolution\n", 32);
 	if (i == 2)

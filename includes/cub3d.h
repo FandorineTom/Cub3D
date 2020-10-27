@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:44:10 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 00:30:17 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 17:06:01 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct	s_mov
 	int			a;
 	int			s;
 	int			d;
+	int			left;
+	int			right;
 }				t_mov;
 
 typedef struct	s_ray
@@ -114,6 +116,25 @@ typedef struct	s_ray
 	int			drawStart;
 	int			drawEnd;
 }				t_ray;
+
+typedef	struct	s_bmp
+{
+	int			file_size;
+	char		type[2];
+	int			reserved;
+	int			offset;
+	int			dib;
+	int			image_w;
+	int			image_h;
+	int			plane;
+	int			bpp;
+	int			compression;
+	int			raw_bitmap_size;
+	int			x;
+	int			y;
+	int			colors_count;
+	int			important_colors;
+}				t_bmp;
 
 typedef struct	s_all
 {
@@ -156,5 +177,7 @@ void			my_mlx_pixel_put(t_all *all, int x, int y, int color);
 void			draw_line(t_all *all, t_ray *ray, int x);
 void			texturing_calculations(t_all *all, t_ray *ray);
 void			sprite_casting(t_all *all, double *buf);
+t_map			init_map(void);
+void			save_bmp(t_all *all);
 
 #endif

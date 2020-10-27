@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:34:18 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/26 14:26:52 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 15:05:22 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_read_file(t_all *all, char *s)
 
 int		put_frame(t_all *all)
 {
-	if (!(all->mov.w || all->mov.a || all->mov.s || all->mov.d))
+	if (!(all->mov.w || all->mov.a || all->mov.s || all->mov.d || all->mov.right || all->mov.left))
 		return (0);
 	running_around(all);
 	all->win.img = mlx_new_image(all->win.mlx, all->win_w, all->win_h);
@@ -68,6 +68,8 @@ int		main(int argc, char **argv)
 	all.win.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h);
 	all.win.addr = mlx_get_data_addr(all.win.img, &all.win.bits_per_pixel, &all.win.line_length, &all.win.endian);
 	cast_rays(&all);
+	if (argv[2] && !(ft_strncmp(argv[2], "--save", 7)))
+		save_bmp(&all);
 	all.flag = 0;
 	mlx_put_image_to_window(all.win.mlx, all.win.win, all.win.img, 0, 0);
 	mlx_destroy_image(all.win.mlx, all.win.img);

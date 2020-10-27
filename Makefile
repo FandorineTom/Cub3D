@@ -6,7 +6,7 @@
 #    By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 13:25:38 by snorthmo          #+#    #+#              #
-#    Updated: 2020/10/27 00:28:39 by snorthmo         ###   ########.fr        #
+#    Updated: 2020/10/27 16:49:36 by snorthmo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = cast_rays.c\
 		key_press.c\
 		parser.c\
 		running_around.c\
+		save_bmp.c\
 		sprites_and_player.c\
 		textures.c\
 		validity.c

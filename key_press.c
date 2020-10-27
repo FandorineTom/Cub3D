@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 23:24:28 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 23:30:16 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:49:07 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int		key_press(int key, t_all *all)
 		all->mov.a = 1;
 	if (key == 2)
 		all->mov.d = 1;
+	if (key == 123)
+		all->mov.left = 1;
+	if (key == 124)
+		all->mov.right = 1;
 	return (0);
 }
 
@@ -37,6 +41,10 @@ int		key_release(int key, t_all *all)
 		all->mov.a = 0;
 	if (key == 2)
 		all->mov.d = 0;
+	if (key == 123)
+		all->mov.left = 0;
+	if (key == 124)
+		all->mov.right = 0;
 	return (0);
 }
 
@@ -44,4 +52,14 @@ int		close_win(int win)
 {
 	win = 0;
 	exit(0);
+}
+
+t_map	init_map(void)
+{
+	t_map	map;
+
+	if (!(map.map_line = malloc(sizeof(char) * 1)))
+		error_write(5);
+	map.map_line[0] = '\0';
+	return (map);
 }
