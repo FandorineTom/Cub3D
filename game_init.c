@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:34:18 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:01:01 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:35:37 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ int		main(int argc, char **argv)
 	mlx_loop_hook(all.win.mlx, put_frame, &all);
 	mlx_hook(all.win.win, 2, (1L << 0), key_press, &all);
 	mlx_hook(all.win.win, 3, (1L << 1), key_release, &all);
-	mlx_hook(all.win.win, 17, 0, close_win, &all);
+	mlx_hook(all.win.win, 17, (1L << 17), close_win, &all);
 	mlx_loop(all.win.mlx);
 }

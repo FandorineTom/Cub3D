@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 23:59:31 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:39:46 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:15:25 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	walls_validity(char **map, int x, int y)
 	i = 0;
 	while (map[i])
 		i++;
-	if (map[y] && x > 0)
+	if (y > 0 && map[y] && x > 0)
 		j = ft_strlen(map[y]);
 	else
 		return ;

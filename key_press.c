@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 23:24:28 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:04:53 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:34:57 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		key_release(int key, t_all *all)
 
 int		close_win(int win)
 {
-	win = 0;
+	(void)win;
 	exit(0);
 }
 

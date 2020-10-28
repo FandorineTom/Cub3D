@@ -6,11 +6,12 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 19:45:30 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 14:05:56 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:26:53 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
+#include <stdio.h>
 
 int		check_for_trash(char *s)
 {
@@ -95,7 +96,7 @@ int		check_map(t_all *all)
 			another_map_check(all, x, y);
 			if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] ==\
 	'2') && (all->s_map.map[y][x + 1] == ' ' || all->s_map.map[y][x - 1] ==\
-	' ' || all->s_map.map[y + 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
+	' ' || all->s_map.map[y - 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
 				return (0);
 		}
 	}
