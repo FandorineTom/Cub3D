@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:39 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 00:30:22 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:11:52 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ void	cast_rays(t_all *all)
 		buf[x] = ray.perpWallDist;
 	}
 	sprite_casting(all, buf);
+	draw_map(all);
 }

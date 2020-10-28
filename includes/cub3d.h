@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:44:10 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 17:06:01 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 11:53:31 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <math.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
+
+#define SCALE 5
 
 typedef struct s_tex
 {
@@ -179,5 +181,6 @@ void			texturing_calculations(t_all *all, t_ray *ray);
 void			sprite_casting(t_all *all, double *buf);
 t_map			init_map(void);
 void			save_bmp(t_all *all);
+void			draw_map(t_all *all);
 
 #endif
