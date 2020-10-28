@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 19:59:34 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:21:46 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:33:26 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,31 @@ void	running_around(t_all *all)
 						all->plr.planey * cos(all->mov.r_speed);
 	}
 	turning_left(all);
+}
+
+void	implement_textures(t_all *all)
+{
+	void	*t[5];
+	int		i[3];
+
+	if (!(t[0] = mlx_xpm_file_to_image(all->win.mlx, all->tex.w_tex,\
+	&all->tex.tex_w[0], &all->tex.tex_h[0])))
+		error_write(2);
+	if (!(t[1] = mlx_xpm_file_to_image(all->win.mlx, all->tex.e_tex,\
+	&all->tex.tex_w[1], &all->tex.tex_h[1])))
+		error_write(2);
+	if (!(t[2] = mlx_xpm_file_to_image(all->win.mlx, all->tex.n_tex,\
+	&all->tex.tex_w[2], &all->tex.tex_h[2])))
+		error_write(2);
+	if (!(t[3] = mlx_xpm_file_to_image(all->win.mlx, all->tex.s_tex,\
+	&all->tex.tex_w[3], &all->tex.tex_h[3])))
+		error_write(2);
+	if (!(t[4] = mlx_xpm_file_to_image(all->win.mlx, all->tex.spr_tex,\
+	&all->tex.tex_w[4], &all->tex.tex_h[4])))
+		error_write(2);
+	all->tex.tex[0] = (int*)mlx_get_data_addr(t[0], &i[0], &i[1], &i[2]);
+	all->tex.tex[1] = (int*)mlx_get_data_addr(t[1], &i[0], &i[1], &i[2]);
+	all->tex.tex[2] = (int*)mlx_get_data_addr(t[2], &i[0], &i[1], &i[2]);
+	all->tex.tex[3] = (int*)mlx_get_data_addr(t[3], &i[0], &i[1], &i[2]);
+	all->tex.tex[4] = (int*)mlx_get_data_addr(t[4], &i[0], &i[1], &i[2]);
 }

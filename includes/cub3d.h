@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:44:10 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:18:06 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:02:53 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
-#define SCALE 5
+# define SCALE 5
 
-typedef struct s_tex
+typedef struct	s_tex
 {
 	char		*n_tex;
 	char		*s_tex;
@@ -47,8 +47,8 @@ typedef struct	s_vars
 	void		*win;
 	char		*addr;
 	void		*img;
-	int         bits_per_pixel;
-    int         line_length;
+	int			bits_per_pixel;
+	int			line_length;
 	int			endian;
 }				t_vars;
 
@@ -72,14 +72,14 @@ typedef struct	s_spr
 {
 	int			spr_count;
 	int			**spr;
-	double		spritex;
-	double		spritey;
+	double		sprx;
+	double		spry;
 	double		invdet;
 	double		transformx;
 	double		transformy;
-	int			sprite_screenx;
-	int			sprite_height;
-	int			sprite_width;
+	int			spr_screenx;
+	int			spr_h;
+	int			spr_w;
 	int			draw_startx;
 	int			draw_starty;
 	int			draw_endx;
@@ -105,13 +105,13 @@ typedef struct	s_ray
 	double		ray_diry;
 	int			mapx;
 	int			mapy;
-	double		sideDistx;
-	double		sideDisty;
+	double		side_distx;
+	double		side_disty;
 	double		delta_distx;
 	double		delta_disty;
 	double		perp_wall_dist;
 	int			stepx;
-	int			stepY;
+	int			stepy;
 	int			hit;
 	int			side;
 	int			line_height;

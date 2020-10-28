@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 23:59:31 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:17:24 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:39:46 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	player_validity(t_all *all)
 	int		y;
 	char	t;
 
-	y = 0;
-	while (all->s_map.map[y])
+	y = -1;
+	while (all->s_map.map[++y])
 	{
 		x = 0;
 		while (all->s_map.map[y][x])
@@ -94,7 +94,6 @@ void	player_validity(t_all *all)
 			all->s_map.map[y][x] = t;
 			break ;
 		}
-		y++;
 	}
 }
 
@@ -109,7 +108,7 @@ void	return_walls(char **map, int x, int y)
 	j = ft_strlen(map[y]);
 	if (y < 0 || y >= i || x < 0 || y >= j)
 		error_write(4);
-	if (map[y][x] == '1' || map[y][x] == '0' || map[y][x] ==  ' '\
+	if (map[y][x] == '1' || map[y][x] == '0' || map[y][x] == ' '\
 	|| map[y][x] == '2')
 		return ;
 	if (map[y][x] == '3')

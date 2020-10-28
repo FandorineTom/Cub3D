@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:39 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:12:19 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:02:33 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ void	cast_rays_part2(t_all *all, t_ray *ray)
 	if (ray->ray_dirx < 0)
 	{
 		ray->stepx = -1;
-		ray->sideDistx = (all->plr.x - ray->mapx) * ray->delta_distx;
+		ray->side_distx = (all->plr.x - ray->mapx) * ray->delta_distx;
 	}
 	else
 	{
 		ray->stepx = 1;
-		ray->sideDistx = (ray->mapx + 1.0 - all->plr.x) * ray->delta_distx;
+		ray->side_distx = (ray->mapx + 1.0 - all->plr.x) * ray->delta_distx;
 	}
 	if (ray->ray_diry < 0)
 	{
-		ray->stepY = -1;
-		ray->sideDisty = (all->plr.y - ray->mapy) * ray->delta_disty;
+		ray->stepy = -1;
+		ray->side_disty = (all->plr.y - ray->mapy) * ray->delta_disty;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDisty = (ray->mapy + 1.0 - all->plr.y) * ray->delta_disty;
+		ray->stepy = 1;
+		ray->side_disty = (ray->mapy + 1.0 - all->plr.y) * ray->delta_disty;
 	}
 }
 
@@ -58,16 +58,16 @@ void	actual_dda(t_all *all, t_ray *ray)
 	ray->hit = 0;
 	while (ray->hit == 0)
 	{
-		if (ray->sideDistx < ray->sideDisty)
+		if (ray->side_distx < ray->side_disty)
 		{
-			ray->sideDistx += ray->delta_distx;
+			ray->side_distx += ray->delta_distx;
 			ray->mapx += ray->stepx;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sideDisty += ray->delta_disty;
-			ray->mapy += ray->stepY;
+			ray->side_disty += ray->delta_disty;
+			ray->mapy += ray->stepy;
 			ray->side = 1;
 		}
 		if (all->s_map.map[ray->mapy][ray->mapx] == '1')
@@ -77,7 +77,7 @@ void	actual_dda(t_all *all, t_ray *ray)
 		ray->perp_wall_dist = (ray->mapx - all->plr.x + (1 - ray->stepx)\
 		/ 2) / ray->ray_dirx;
 	else
-		ray->perp_wall_dist = (ray->mapy - all->plr.y + (1 - ray->stepY)\
+		ray->perp_wall_dist = (ray->mapy - all->plr.y + (1 - ray->stepy)\
 		/ 2) / ray->ray_diry;
 	line_start_end(all, ray);
 }

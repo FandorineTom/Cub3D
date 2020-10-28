@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 19:45:30 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:27:58 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:05:56 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,14 @@ int		check_map(t_all *all)
 	map_validity(all);
 	while (all->s_map.map[++y + 1])
 	{
-		x = 0;
-		while (all->s_map.map[y][x])
+		x = -1;
+		while (all->s_map.map[y][++x])
 		{
 			another_map_check(all, x, y);
-			if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x]\
- == '2') && (all->s_map.map[y][x + 1] == ' ' || all->s_map.map[y][x - 1]\
- == ' ' || all->s_map.map[y + 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
+			if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] ==\
+	'2') && (all->s_map.map[y][x + 1] == ' ' || all->s_map.map[y][x - 1] ==\
+	' ' || all->s_map.map[y + 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
 				return (0);
-			x++;
 		}
 	}
 	x = -1;
