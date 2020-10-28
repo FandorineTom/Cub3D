@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:44:41 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 16:15:53 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:12:20 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	ft_init_all(t_all *all)
 {
 	t_plr	plr;
 
-	plr.dirX = 0;
-	plr.dirY = 0;
+	plr.dirx = 0;
+	plr.diry = 0;
 	all->s_map = init_map();
 	all->tex = init_tex();
 	all->win = init_win();

@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:39 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 12:11:52 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:12:19 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,42 @@
 
 void	cast_rays_part2(t_all *all, t_ray *ray)
 {
-	ray->ray_dirY = all->plr.dirY + all->plr.planeY * ray->cameraX;
-	ray->mapX = (int)all->plr.x;
-	ray->mapY = (int)all->plr.y;
-	ray->deltaDistX = fabs(1 / ray->ray_dirX);
-	ray->deltaDistY = fabs(1 / ray->ray_dirY);
-	if (ray->ray_dirX < 0)
+	ray->ray_diry = all->plr.diry + all->plr.planey * ray->camerax;
+	ray->mapx = (int)all->plr.x;
+	ray->mapy = (int)all->plr.y;
+	ray->delta_distx = fabs(1 / ray->ray_dirx);
+	ray->delta_disty = fabs(1 / ray->ray_diry);
+	if (ray->ray_dirx < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (all->plr.x - ray->mapX) * ray->deltaDistX;
+		ray->stepx = -1;
+		ray->sideDistx = (all->plr.x - ray->mapx) * ray->delta_distx;
 	}
 	else
 	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - all->plr.x) * ray->deltaDistX;
+		ray->stepx = 1;
+		ray->sideDistx = (ray->mapx + 1.0 - all->plr.x) * ray->delta_distx;
 	}
-	if (ray->ray_dirY < 0)
+	if (ray->ray_diry < 0)
 	{
 		ray->stepY = -1;
-		ray->sideDistY = (all->plr.y - ray->mapY) * ray->deltaDistY;
+		ray->sideDisty = (all->plr.y - ray->mapy) * ray->delta_disty;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - all->plr.y) * ray->deltaDistY;
+		ray->sideDisty = (ray->mapy + 1.0 - all->plr.y) * ray->delta_disty;
 	}
-	
 }
 
 void	line_start_end(t_all *all, t_ray *ray)
 {
-	ray->lineHeight = (int)(all->win_h / ray->perpWallDist);
-	ray->drawStart = -ray->lineHeight / 2 + all->win_h / 2;
-	if (ray->drawStart < 0)
-		ray->drawStart = 0;
-	ray->drawEnd = ray->lineHeight / 2 + all->win_h / 2;
-	if (ray->drawEnd > all->win_h)
-		ray->drawEnd = all->win_h - 1;
+	ray->line_height = (int)(all->win_h / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + all->win_h / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->drawend = ray->line_height / 2 + all->win_h / 2;
+	if (ray->drawend > all->win_h)
+		ray->drawend = all->win_h - 1;
 }
 
 void	actual_dda(t_all *all, t_ray *ray)
@@ -59,25 +58,27 @@ void	actual_dda(t_all *all, t_ray *ray)
 	ray->hit = 0;
 	while (ray->hit == 0)
 	{
-		if (ray->sideDistX < ray->sideDistY)
+		if (ray->sideDistx < ray->sideDisty)
 		{
-			ray->sideDistX += ray->deltaDistX;
-			ray->mapX += ray->stepX;
+			ray->sideDistx += ray->delta_distx;
+			ray->mapx += ray->stepx;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sideDistY += ray->deltaDistY;
-			ray->mapY += ray->stepY;
+			ray->sideDisty += ray->delta_disty;
+			ray->mapy += ray->stepY;
 			ray->side = 1;
 		}
-		if (all->s_map.map[ray->mapY][ray->mapX] == '1')
+		if (all->s_map.map[ray->mapy][ray->mapx] == '1')
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perpWallDist = (ray->mapX - all->plr.x + (1 - ray->stepX) / 2) / ray->ray_dirX;
+		ray->perp_wall_dist = (ray->mapx - all->plr.x + (1 - ray->stepx)\
+		/ 2) / ray->ray_dirx;
 	else
-		ray->perpWallDist = (ray->mapY - all->plr.y + (1 - ray->stepY) / 2) / ray->ray_dirY;
+		ray->perp_wall_dist = (ray->mapy - all->plr.y + (1 - ray->stepY)\
+		/ 2) / ray->ray_diry;
 	line_start_end(all, ray);
 }
 
@@ -94,13 +95,13 @@ void	cast_rays(t_all *all)
 		implement_textures(all);
 	while (++x < all->win_w)
 	{
-		ray.cameraX = 2 * x / (double)all->win_w - 1;
-		ray.ray_dirX = all->plr.dirX + all->plr.planeX * ray.cameraX;
+		ray.camerax = 2 * x / (double)all->win_w - 1;
+		ray.ray_dirx = all->plr.dirx + all->plr.planex * ray.camerax;
 		cast_rays_part2(all, &ray);
 		actual_dda(all, &ray);
 		texturing_calculations(all, &ray);
 		draw_line(all, &ray, x);
-		buf[x] = ray.perpWallDist;
+		buf[x] = ray.perp_wall_dist;
 	}
 	sprite_casting(all, buf);
 	draw_map(all);

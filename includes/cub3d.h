@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:44:10 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 11:53:31 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:18:06 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_tex
 	int			tex_h[5];
 	int			tex_w[5];
 	int			*tex[5];
-	int			texX;
+	int			texx;
 	double		step;
-	double		texPos;
+	double		texpos;
 	int			color;
 	char		**s_tmp;
 }				t_tex;
@@ -62,28 +62,28 @@ typedef struct	s_plr
 {
 	double		x;
 	double		y;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
+	double		dirx;
+	double		diry;
+	double		planex;
+	double		planey;
 }				t_plr;
 
 typedef struct	s_spr
 {
 	int			spr_count;
 	int			**spr;
-	double		spriteX;
-	double		spriteY;
-	double		invDet;
-	double		transformX;
-	double		transformY;
-	int			spriteScreenX;
-	int			spriteHeight;
-	int			spriteWidth;
-	int			drawStartX;
-	int			drawStartY;
-	int			drawEndX;
-	int			drawEndY;
+	double		spritex;
+	double		spritey;
+	double		invdet;
+	double		transformx;
+	double		transformy;
+	int			sprite_screenx;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_startx;
+	int			draw_starty;
+	int			draw_endx;
+	int			draw_endy;
 }				t_spr;
 
 typedef struct	s_mov
@@ -100,23 +100,23 @@ typedef struct	s_mov
 
 typedef struct	s_ray
 {
-	double		cameraX;
-	double		ray_dirX;
-	double		ray_dirY;
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	int			stepX;
+	double		camerax;
+	double		ray_dirx;
+	double		ray_diry;
+	int			mapx;
+	int			mapy;
+	double		sideDistx;
+	double		sideDisty;
+	double		delta_distx;
+	double		delta_disty;
+	double		perp_wall_dist;
+	int			stepx;
 	int			stepY;
 	int			hit;
 	int			side;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			line_height;
+	int			draw_start;
+	int			drawend;
 }				t_ray;
 
 typedef	struct	s_bmp

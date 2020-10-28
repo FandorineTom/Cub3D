@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 01:03:20 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/26 14:03:21 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:12:21 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	parse_sprites(t_all *all, int m)
 	int y;
 
 	y = 0;
-	while(all->s_map.map[y])
+	while (all->s_map.map[y])
 	{
 		x = 0;
 		while (all->s_map.map[y][x])
@@ -71,17 +71,17 @@ void	player_orientation_part2(t_all *all, int x, int y)
 		error_write(4);
 	if (all->s_map.map[y][x] == 'W')
 	{
-		all->plr.dirX = -1;
-		all->plr.dirY = 0;
-		all->plr.planeX = 0;
-		all->plr.planeY = -1;
+		all->plr.dirx = -1;
+		all->plr.diry = 0;
+		all->plr.planex = 0;
+		all->plr.planey = -1;
 	}
 	if (all->s_map.map[y][x] == 'E')
 	{
-		all->plr.dirX = 1;
-		all->plr.dirY = 0;
-		all->plr.planeX = 0;
-		all->plr.planeY = 1;
+		all->plr.dirx = 1;
+		all->plr.diry = 0;
+		all->plr.planex = 0;
+		all->plr.planey = 1;
 	}
 	all->s_map.map[y][x] = '0';
 }
@@ -92,17 +92,17 @@ void	player_orientation(t_all *all, int x, int y)
 	all->plr.y = y + 0.5;
 	if (all->s_map.map[y][x] == 'N')
 	{
-		all->plr.dirX = 0;
-		all->plr.dirY = -1;
-		all->plr.planeX = 1;
-		all->plr.planeY = 0;
+		all->plr.dirx = 0;
+		all->plr.diry = -1;
+		all->plr.planex = 1;
+		all->plr.planey = 0;
 	}
 	if (all->s_map.map[y][x] == 'S')
 	{
-		all->plr.dirX = 0;
-		all->plr.dirY = 1;
-		all->plr.planeX = -1;
-		all->plr.planeY = 0;
+		all->plr.dirx = 0;
+		all->plr.diry = 1;
+		all->plr.planex = -1;
+		all->plr.planey = 0;
 	}
 	player_orientation_part2(all, x, y);
 }
@@ -117,7 +117,7 @@ void	sprites_and_player(t_all *all)
 	while (*all->s_map.map[y])
 	{
 		x = 0;
-		while(all->s_map.map[y][x])
+		while (all->s_map.map[y][x])
 		{
 			t = all->s_map.map[y][x];
 			if (t == 'N' || t == 'S' || t == 'W' || t == 'E')

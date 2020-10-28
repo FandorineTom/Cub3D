@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 23:24:28 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 16:49:07 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:04:53 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ t_map	init_map(void)
 		error_write(5);
 	map.map_line[0] = '\0';
 	return (map);
+}
+
+void	check_map_trash(char *line, t_all *all)
+{
+	static int i;
+
+	if (all->s_map.map_line[0] && line[0] == '\0')
+		i = 1;
+	if ((*line == '1' || *line == '0') && i == 1)
+		error_write(7);
 }

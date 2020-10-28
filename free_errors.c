@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:20:52 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/27 16:14:04 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:03:45 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 char	*ft_to_the_start(char *line, int x, int y)
 {
 	if (!x)
-		while(*(line - 1) == ' ')
+		while (*(line - 1) == ' ')
 			line--;
 	if (x)
 		while (y--)
 			line--;
-	return(line);
+	return (line);
 }
 
 void	my_mlx_pixel_put(t_all *all, int x, int y, int color)
@@ -71,4 +71,26 @@ void	error_write(int i)
 	if (i == 9)
 		write(1, "Error\ninvalid arguments\n", 24);
 	exit(0);
+}
+
+void	check_cub_file(char *line, t_all *all)
+{
+	if ((ft_strnstr(line, "NO ", 3)) && all->tex.n_tex)
+		error_write(7);
+	else if ((ft_strnstr(line, "SO ", 3)) && all->tex.s_tex)
+		error_write(7);
+	else if ((ft_strnstr(line, "WE ", 3)) && all->tex.w_tex)
+		error_write(7);
+	else if ((ft_strnstr(line, "EA ", 3)) && all->tex.e_tex)
+		error_write(7);
+	else if ((ft_strnstr(line, "S ", 2)) && all->tex.spr_tex)
+		error_write(7);
+	else if ((ft_strnstr(line, "R ", 2)) && all->win_w)
+		error_write(7);
+	else if ((ft_strnstr(line, "F ", 2)) && all->tex.f_col != -1)
+		error_write(7);
+	else if ((ft_strnstr(line, "C ", 2)) && all->tex.c_col != -1)
+		error_write(7);
+	else if (all->s_map.map_line[0])
+		error_write(7);
 }

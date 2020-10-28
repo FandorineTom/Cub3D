@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 23:59:31 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 00:17:17 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:17:24 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ void	walls_validity(char **map, int x, int y)
 	walls_validity(map, x, y - 1);
 	walls_validity(map, x + 1, y);
 	walls_validity(map, x - 1, y);
-	// i = 0;
-	// while (map[i])
-	// 	printf("%s\n", map[i++]);
 }
 
 void	player_validity(t_all *all)
@@ -78,7 +75,7 @@ void	player_validity(t_all *all)
 	char	t;
 
 	y = 0;
-	while(all->s_map.map[y])
+	while (all->s_map.map[y])
 	{
 		x = 0;
 		while (all->s_map.map[y][x])
@@ -132,7 +129,7 @@ void	return_player(t_all *all)
 	char	t;
 
 	y = 0;
-	while(all->s_map.map[y])
+	while (all->s_map.map[y])
 	{
 		x = 0;
 		while (all->s_map.map[y][x])

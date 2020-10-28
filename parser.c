@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 18:53:11 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/25 13:57:21 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:20:58 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,15 @@ void	parse_rest(char *line, t_all *all)
 	check_cub_file(line, all);
 	if (ft_strnstr(line, "R ", 2))
 	{
-		while(*line == 'R' || *line == ' ' || *line == '0')
+		while (*line == 'R' || *line == ' ' || *line == '0')
 			line++;
 		all->win_w = ft_atoi(line);
 		if (all->win_w > all->win_w_max || all->win_w < 0)
 			all->win_w = all->win_w_max;
-		// while (*line == ' ')
-		// 	line++;
 		while (*line != ' ')
 			line++;
 		all->win_h = ft_atoi(line);
-		if(all->win_h > all->win_h_max || all->win_h < 0)
+		if (all->win_h > all->win_h_max || all->win_h < 0)
 			all->win_h = all->win_h_max;
 		if (check_for_trash(line) && all->win_h > 0)
 			error_write(1);
@@ -127,7 +125,7 @@ void	parse(char *line, t_all *all)
 	check_map_trash(line, all);
 	if (*line == '1' || *line == '0')
 	{
-		while(*(line - 1) == ' ')
+		while (*(line - 1) == ' ')
 			line--;
 		read_map(line, all);
 		return ;

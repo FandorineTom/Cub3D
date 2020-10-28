@@ -6,33 +6,11 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 19:45:30 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 00:17:00 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:27:58 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
-
-void	check_cub_file(char *line, t_all *all)
-{
-	if ((ft_strnstr(line, "NO ", 3)) && all->tex.n_tex)
-		error_write(7);
-	else if ((ft_strnstr(line, "SO ", 3)) && all->tex.s_tex)
-		error_write(7);
-	else if ((ft_strnstr(line, "WE ", 3)) && all->tex.w_tex)
-		error_write(7);
-	else if ((ft_strnstr(line, "EA ", 3)) && all->tex.e_tex)
-		error_write(7);
-	else if ((ft_strnstr(line, "S ", 2)) && all->tex.spr_tex)
-		error_write(7);
-	else if ((ft_strnstr(line, "R ", 2)) && all->win_w)
-		error_write(7);
-	else if ((ft_strnstr(line, "F ", 2)) && all->tex.f_col != -1)
-		error_write(7);
-	else if ((ft_strnstr(line, "C ", 2)) && all->tex.c_col != -1)
-		error_write(7);
-	else if (all->s_map.map_line[0])
-		error_write(7);
-}
 
 int		check_for_trash(char *s)
 {
@@ -52,7 +30,7 @@ void	check_for_commas(char *s)
 	int i;
 
 	i = 0;
-	while(*s)
+	while (*s)
 	{
 		if (*s == ',')
 			i++;
@@ -87,16 +65,6 @@ void	check_valid_colors(char **s)
 	}
 }
 
-void	check_map_trash(char *line, t_all *all)
-{
-	static int i;
-
-	if (all->s_map.map_line[0] && line[0] == '\0')
-		i = 1;
-	if ((*line == '1' || *line == '0') && i == 1)
-		error_write(7);
-}
-
 void	another_map_check(t_all *all, int x, int y)
 {
 	player_validity(all);
@@ -125,9 +93,9 @@ int		check_map(t_all *all)
 		while (all->s_map.map[y][x])
 		{
 			another_map_check(all, x, y);
-			if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x] == '2')\
-			&& (all->s_map.map[y][x + 1] == ' ' || all->s_map.map[y][x - 1] == ' '\
-			|| all->s_map.map[y + 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
+			if ((all->s_map.map[y][x] == '3' || all->s_map.map[y][x]\
+ == '2') && (all->s_map.map[y][x + 1] == ' ' || all->s_map.map[y][x - 1]\
+ == ' ' || all->s_map.map[y + 1][x] == ' ' || all->s_map.map[y + 1][x] == ' '))
 				return (0);
 			x++;
 		}
@@ -136,7 +104,7 @@ int		check_map(t_all *all)
 	while (all->s_map.map[y][++x])
 		if (all->s_map.map[y][x] != ' ' && all->s_map.map[y][x] != '1'\
 		&& all->s_map.map[y][x] != '0')
-		return (0);
+			return (0);
 	return_player(all);
 	sprites_and_player(all);
 	return (1);
