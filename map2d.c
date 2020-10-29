@@ -6,7 +6,7 @@
 /*   By: snorthmo <snorthmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 11:34:58 by snorthmo          #+#    #+#             */
-/*   Updated: 2020/10/28 13:13:53 by snorthmo         ###   ########.fr       */
+/*   Updated: 2020/10/29 10:48:18 by snorthmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	draw_square(int i, int j, int color, t_all *all)
 	tmp = i;
 	count_x = 0;
 	count_y = 0;
+	if (i > all->win_h || i > all->win_w || j > all->win_h || j > all->win_w)
+		return ;
 	while (count_y < SCALE)
 	{
 		count_x = 0;
@@ -44,6 +46,8 @@ void	draw_player(double i, double j, int color, t_all *all)
 	tmp = i;
 	count_x = 0;
 	count_y = 0;
+	if (i > all->win_h || i > all->win_w || j > all->win_h || j > all->win_w)
+		return ;
 	while (count_y < SCALE)
 	{
 		count_x = 0;
